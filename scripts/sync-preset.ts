@@ -1,24 +1,79 @@
-const presetName = process.argv[2];
+import { resolve } from "path";
+import {
+  DEFAULT_PLAYBOOK_SOURCE_ROOT,
+  type NewPlaybookConfig,
+  syncPlaybookConfig,
+} from "./playbook.js";
 
-if (!presetName) {
-  console.log("Usage: pnpm run sync-preset <preset-name> [--target <path>]");
-  console.log("Example: pnpm run sync-preset web3-product");
-  console.log("");
-  console.log("Stub: validates preset exists, then exits. Future: copy/link modules into target.");
-  process.exit(0);
+function usage() {
+  console.log("Usage: pnpm run sync-preset <preset-name> [--target <path>] [--source <path>]");
+  console.log("Example: pnpm run sync-preset web3-product --target .");
 }
 
-const { readFileSync, existsSync } = await import("fs");
-const { join, dirname } = await import("path");
-const { fileURLToPath } = await import("url");
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const presetPath = join(__dirname, "..", "presets", presetName, "preset.yaml");
+function parseArgs(argv: string[]) {
+  const presetName = argv[2];
+  if (!presetName || presetName.startsWith("-")) {
+    return { presetName: undefined, targetPath: ".", sourcePath: undefined as string | undefined };
+  }
 
-if (!existsSync(presetPath)) {
-  console.error(`Preset not found: ${presetName}`);
-  process.exit(1);
+  let targetPath = ".";
+  let sourcePath: string | undefined;
+
+  for (let i = 3; i < argv.length; i++) {
+    const arg = argv[i];
+    if (arg === "--target" && argv[i + 1]) {
+      targetPath = argv[++i];
+      continue;
+    }
+    if (arg === "--source" && argv[i + 1]) {
+      sourcePath = argv[++i];
+      continue;
+    }
+    console.error(`Unknown argument: ${arg}`);
+    usage();
+    process.exit(1);
+  }
+
+  return { presetName, targetPath, sourcePath };
 }
 
-console.log(`sync-preset: stub - preset="${presetName}" exists`);
-console.log("Future: resolve required+optional modules, copy/link into --target. Options: --dry-run, --link");
-process.exit(0);
+function main() {
+  try {
+    const { presetName, targetPath, sourcePath } = parseArgs(process.argv);
+    if (!presetName) {
+      usage();
+      process.exit(0);
+    }
+
+    const cwd = process.cwd();
+    const targetRoot = resolve(cwd, targetPath);
+    const sourceRoot = sourcePath ? resolve(cwd, sourcePath) : DEFAULT_PLAYBOOK_SOURCE_ROOT;
+
+    const config: NewPlaybookConfig = {
+      preset: presetName,
+      include: { rules: [], skills: [], commands: [], templates: [] },
+      exclude: { rules: [], skills: [], commands: [], templates: [] },
+      overrides: {},
+    };
+
+    const result = syncPlaybookConfig({
+      config,
+      targetRoot,
+      sourceRoot,
+      sourceLabel: sourceRoot,
+    });
+
+    console.log("sync-preset delegated to playbook sync.");
+    console.log(`Preset: ${presetName}`);
+    console.log(`Target: ${targetRoot}`);
+    console.log(`Source: ${sourceRoot}`);
+    console.log(
+      `Resolved modules: rules=${result.resolved.rules.length}, skills=${result.resolved.skills.length}, commands=${result.resolved.commands.length}, templates=${result.resolved.templates.length}`
+    );
+  } catch (error) {
+    console.error((error as Error).message);
+    process.exit(1);
+  }
+}
+
+main();

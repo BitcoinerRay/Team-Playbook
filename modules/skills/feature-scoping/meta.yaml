@@ -3,7 +3,7 @@ name: Feature Scoping
 type: skill
 version: "1.0"
 owner: team
-status: active
+status: stable
 summary: Define acceptance criteria and edge cases for a feature
 tags: [scope, feature, planning]
 applies_to: [product, engineering]

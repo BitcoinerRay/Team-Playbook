@@ -4,7 +4,7 @@ Example project using the **web3-product** preset with overrides.
 
 ## How to Use
 
-Copy `playbook.yaml` to your project root. The preset and overrides declare which modules apply. Tooling (sync-preset, Cursor, etc.) resolves `preset: web3-product` against this repo's registry.
+Copy `playbook.yaml` to your project root. The preset/include/exclude declare which modules apply. Run `pnpm playbook sync` to resolve and materialize outputs for Cursor/agents.
 
 ## Description
 

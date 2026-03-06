@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Preset",
+  "description": "Preset metadata as in registry index",
+  "type": "object",
+  "required": ["id", "name", "version", "summary", "required", "optional", "path"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "summary": { "type": "string" },
+    "applies_to": { "type": "array", "items": { "type": "string" } },
+    "required": {
+      "type": "object",
+      "properties": {
+        "rules": { "type": "array", "items": { "type": "string" } },
+        "skills": { "type": "array", "items": { "type": "string" } },
+        "commands": { "type": "array", "items": { "type": "string" } },
+        "templates": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "optional": {
+      "type": "object",
+      "properties": {
+        "rules": { "type": "array", "items": { "type": "string" } },
+        "skills": { "type": "array", "items": { "type": "string" } },
+        "commands": { "type": "array", "items": { "type": "string" } },
+        "templates": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "path": { "type": "string" }
+  }
+}

@@ -3,7 +3,7 @@ name: Monorepo Base
 type: rule
 version: "1.0"
 owner: team
-status: active
+status: stable
 summary: Workspace layout, package boundaries, and shared dependencies for monorepos
 tags: [monorepo, structure, workspace]
 applies_to: [monorepo]

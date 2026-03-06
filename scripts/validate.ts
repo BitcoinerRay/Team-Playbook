@@ -15,7 +15,7 @@ const MetaSchema = z.object({
   type: z.enum(["rule", "skill", "command", "template"]),
   version: z.string(),
   owner: z.string(),
-  status: z.string(),
+  status: z.enum(["stable", "experimental", "deprecated", "archived"]),
   summary: z.string(),
   tags: z.array(z.string()),
   applies_to: z.array(z.string()),
@@ -29,6 +29,7 @@ const PresetSchema = z.object({
   version: z.string(),
   summary: z.string(),
   applies_to: z.array(z.string()),
+  extends: z.string().optional(),
   required: z.object({
     rules: z.array(z.string()),
     skills: z.array(z.string()),
@@ -92,8 +93,8 @@ function collectModuleIds(): Map<string, string> {
   return ids;
 }
 
-function collectPresetRefs(): { presetId: string; refs: string[] }[] {
-  const presets: { presetId: string; refs: string[] }[] = [];
+function collectPresetRefs(): { presetId: string; refs: string[]; extends?: string }[] {
+  const presets: { presetId: string; refs: string[]; extends?: string }[] = [];
   if (!existsSync(PRESETS_DIR)) return presets;
   const subdirs = readdirSync(PRESETS_DIR, { withFileTypes: true })
     .filter((e) => e.isDirectory())
@@ -116,7 +117,11 @@ function collectPresetRefs(): { presetId: string; refs: string[] }[] {
     for (const key of ["rules", "skills", "commands", "templates"] as const) {
       refs.push(...result.data.required[key], ...result.data.optional[key]);
     }
-    presets.push({ presetId: result.data.id, refs: refs.filter(Boolean) });
+    presets.push({
+      presetId: result.data.id,
+      refs: refs.filter(Boolean),
+      extends: result.data.extends,
+    });
   }
   return presets;
 }
@@ -124,8 +129,20 @@ function collectPresetRefs(): { presetId: string; refs: string[] }[] {
 function main() {
   const moduleIds = collectModuleIds();
   const presetRefs = collectPresetRefs();
+  const presetIds = new Set(presetRefs.map((p) => p.presetId));
 
-  for (const { presetId, refs } of presetRefs) {
+  for (const { presetId, refs, extends: extendsId } of presetRefs) {
+    if (extendsId) {
+      if (!presetIds.has(extendsId)) {
+        console.error(`Preset ${presetId} extends unknown preset: ${extendsId}`);
+        process.exit(1);
+      }
+      const base = presetRefs.find((p) => p.presetId === extendsId);
+      if (base?.extends) {
+        console.error(`Preset ${presetId}: extends chain limited to one level; ${extendsId} must not extend another preset`);
+        process.exit(1);
+      }
+    }
     for (const ref of refs) {
       if (!moduleIds.has(ref)) {
         console.error(`Preset ${presetId} references unknown module: ${ref}`);

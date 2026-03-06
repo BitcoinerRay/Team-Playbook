@@ -29,8 +29,43 @@ interface PresetMeta {
   version: string;
   summary: string;
   applies_to: string[];
+  extends?: string;
   required: { rules: string[]; skills: string[]; commands: string[]; templates: string[] };
   optional: { rules: string[]; skills: string[]; commands: string[]; templates: string[] };
+}
+
+type PresetWithPath = PresetMeta & { path: string };
+
+function mergeArrays(a: string[], b: string[]): string[] {
+  return [...new Set([...a, ...b])];
+}
+
+function resolvePreset(
+  preset: PresetWithPath,
+  presetMap: Map<string, PresetWithPath>
+): PresetWithPath {
+  if (!preset.extends) return preset;
+  const base = presetMap.get(preset.extends);
+  if (!base) return preset;
+
+  const baseResolved = resolvePreset(base, presetMap);
+  const keys = ["rules", "skills", "commands", "templates"] as const;
+
+  const required = {} as PresetMeta["required"];
+  const optional = {} as PresetMeta["optional"];
+
+  for (const k of keys) {
+    required[k] = mergeArrays(baseResolved.required[k] || [], preset.required[k] || []);
+    const optMerged = mergeArrays(baseResolved.optional[k] || [], preset.optional[k] || []);
+    optional[k] = optMerged.filter((id) => !required[k].includes(id));
+  }
+
+  return {
+    ...preset,
+    required,
+    optional,
+    extends: undefined,
+  };
 }
 
 function collectModules(): (ModuleMeta & { path: string })[] {
@@ -52,8 +87,8 @@ function collectModules(): (ModuleMeta & { path: string })[] {
   return modules;
 }
 
-function collectPresets(): (PresetMeta & { path: string })[] {
-  const presets: (PresetMeta & { path: string })[] = [];
+function collectPresets(): PresetWithPath[] {
+  const presets: PresetWithPath[] = [];
   if (!existsSync(PRESETS_DIR)) return presets;
   const subdirs = readdirSync(PRESETS_DIR, { withFileTypes: true })
     .filter((e) => e.isDirectory())
@@ -90,10 +125,26 @@ function buildSearchIndex(modules: (ModuleMeta & { path: string })[], presets: (
 
 function main() {
   const modules = collectModules();
-  const presets = collectPresets();
+  const rawPresets = collectPresets();
+  const presetMap = new Map(rawPresets.map((p) => [p.id, p]));
+  const presets = rawPresets.map((p) => resolvePreset(p, presetMap));
 
-  const index = { modules, presets };
-  const searchIndex = buildSearchIndex(modules, presets);
+  const builtAt = new Date().toISOString();
+  const schemaVersion = "1";
+
+  const index = {
+    $schema: "./schema/registry.json",
+    schema_version: schemaVersion,
+    built_at: builtAt,
+    modules,
+    presets,
+  };
+
+  const searchIndex = {
+    schema_version: schemaVersion,
+    built_at: builtAt,
+    ...buildSearchIndex(modules, presets),
+  };
 
   if (!existsSync(REGISTRY_DIR)) {
     mkdirSync(REGISTRY_DIR, { recursive: true });

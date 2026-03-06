@@ -1,17 +1,17 @@
-version: "1"
-
-preset: web3-product
-
-overrides:
-  rules:
-    add: [backend-rest-style]
-    remove: []
-  skills:
-    add: [launch-copywriting]
-    remove: []
-  commands:
-    add: [create-prd]
-    remove: []
-  templates:
-    add: [launch-plan-template]
-    remove: []
+playbook:
+  source:
+    repo: git@github.com:your-org/team-playbook.git
+    ref: main
+  preset: web3-product
+  include:
+    rules:
+      - backend-rest-style
+    skills:
+      - launch-copywriting
+    commands:
+      - create-prd
+    templates:
+      - launch-plan-template
+  overrides:
+    project_name: sample-project-a
+    project_type: product

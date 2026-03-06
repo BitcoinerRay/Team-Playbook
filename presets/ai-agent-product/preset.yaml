@@ -3,16 +3,14 @@ name: AI Agent Product
 version: "1.0"
 summary: Preset for AI/Agent product projects
 applies_to: [ai, agent, product]
+extends: preset-base
 
 required:
-  rules:
-    - monorepo-base
-    - git-branching
+  rules: []
   skills:
     - draft-prd
     - feature-scoping
-  commands:
-    []
+  commands: []
   templates:
     - prd-template
 

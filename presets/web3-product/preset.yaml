@@ -3,16 +3,14 @@ name: Web3 Product
 version: "1.0"
 summary: Preset for Web3/crypto product projects
 applies_to: [web3, crypto, product]
+extends: preset-base
 
 required:
   rules:
-    - monorepo-base
-    - git-branching
     - env-management
   skills:
     - draft-prd
-  commands:
-    []
+  commands: []
   templates:
     - prd-template
 

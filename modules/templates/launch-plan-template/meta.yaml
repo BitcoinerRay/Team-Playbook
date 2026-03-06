@@ -3,7 +3,7 @@ name: Launch Plan Template
 type: template
 version: "1.0"
 owner: team
-status: active
+status: stable
 summary: Launch plan structure with channels, copy, and rollback
 tags: [launch, product, marketing]
 applies_to: [product]

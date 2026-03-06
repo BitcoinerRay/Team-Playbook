@@ -1,17 +1,23 @@
-version: "1"
+# Team Playbook - 项目配置
+# 推荐：preset + include/exclude + 项目级 overrides
 
-preset: web3-product
-
-overrides:
-  rules:
-    add: [backend-rest-style]
-    remove: []
-  skills:
-    add: [launch-copywriting]
-    remove: []
-  commands:
-    add: []
-    remove: []
-  templates:
-    add: [launch-plan-template]
-    remove: []
+playbook:
+  source:
+    repo: git@github.com:your-org/team-playbook.git
+    ref: main
+  preset: web3-product
+  include:
+    rules:
+      - backend-rest-style
+      - env-management
+    skills:
+      - draft-prd
+      - architecture-review
+    commands:
+      - create-prd
+  exclude:
+    rules:
+      - frontend-structure
+  overrides:
+    project_name: tyche-launcher
+    project_type: product

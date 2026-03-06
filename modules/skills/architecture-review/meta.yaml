@@ -3,7 +3,7 @@ name: Architecture Review
 type: skill
 version: "1.0"
 owner: team
-status: active
+status: stable
 summary: Review design docs for tradeoffs, risks, and alternatives
 tags: [architecture, review, design]
 applies_to: [engineering]

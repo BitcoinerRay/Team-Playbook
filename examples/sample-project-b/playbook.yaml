@@ -1,17 +1,18 @@
-version: "1"
-
-preset: ai-agent-product
-
-overrides:
-  rules:
-    add: [env-management]
-    remove: []
-  skills:
-    add: [launch-copywriting]
-    remove: []
-  commands:
-    add: [create-prd, review-feature-scope]
-    remove: []
-  templates:
-    add: [launch-plan-template]
-    remove: []
+playbook:
+  source:
+    repo: git@github.com:your-org/team-playbook.git
+    ref: main
+  preset: ai-agent-product
+  include:
+    rules:
+      - env-management
+    skills:
+      - launch-copywriting
+    commands:
+      - create-prd
+      - review-feature-scope
+    templates:
+      - launch-plan-template
+  overrides:
+    project_name: sample-project-b
+    project_type: ai-agent

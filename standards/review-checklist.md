@@ -8,7 +8,13 @@ Use when reviewing PRs that add or modify modules.
 - [ ] `id` matches directory name exactly (enforced by `pnpm validate`) and is kebab-case
 - [ ] `type` is one of: rule, skill, command, template
 - [ ] `version`, `owner`, `status`, `summary`, `tags`, `updated_at` are present
+- [ ] `status` is one of: stable, experimental, deprecated, archived
 - [ ] `applies_to` and `dependencies` are set (can be empty arrays)
+
+## Atomicity
+
+- [ ] Module focuses on a single concern; consider splitting if it spans multiple unrelated topics
+- [ ] If README has many Required/Recommended blocks (e.g. >4), consider splitting into smaller modules
 
 ## Content
 

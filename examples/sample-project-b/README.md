@@ -4,7 +4,7 @@ Example project using the **ai-agent-product** preset with overrides.
 
 ## How to Use
 
-Copy `playbook.yaml` to your project root. Preset resolution depends on your tooling (sync-preset, Cursor, etc.).
+Copy `playbook.yaml` to your project root, then run `pnpm playbook sync` to resolve preset/include/exclude and materialize outputs.
 
 ## Description
 

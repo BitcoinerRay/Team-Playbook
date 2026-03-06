@@ -3,7 +3,7 @@ name: Launch Copywriting
 type: skill
 version: "1.0"
 owner: team
-status: active
+status: stable
 summary: Transform feature list into value-first launch copy
 tags: [launch, copy, product]
 applies_to: [product]

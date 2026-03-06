@@ -40,6 +40,10 @@ Each module must have `meta.yaml` with:
 
 `id` must match the directory name (e.g. `modules/rules/git-branching` requires `id: git-branching`). See [standards/rule-spec.md](standards/rule-spec.md) for full example.
 
+### Presets
+
+Presets live in `presets/<id>/` with `preset.yaml` and `README.md`. Use `extends: preset-base` (or another preset) to inherit required/optional modules. Only one level of inheritance is allowed. Run `pnpm validate` to check preset refs and extends.
+
 ### Review
 
 Reviewers use [standards/review-checklist.md](standards/review-checklist.md). Ensure:

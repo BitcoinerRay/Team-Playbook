@@ -3,7 +3,7 @@ name: Create PRD
 type: command
 version: "1.0"
 owner: team
-status: active
+status: stable
 summary: Scaffold a new PRD from problem statement
 tags: [prd, scaffold, product]
 applies_to: [product]

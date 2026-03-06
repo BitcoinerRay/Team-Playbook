@@ -3,7 +3,7 @@ name: Frontend Structure
 type: rule
 version: "1.0"
 owner: team
-status: active
+status: stable
 summary: Feature folders, component hierarchy, and state placement
 tags: [frontend, structure, react]
 applies_to: [frontend]

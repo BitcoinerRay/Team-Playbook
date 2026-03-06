@@ -2,12 +2,13 @@
 
 ## How to Consume
 
-1. **New project**: Copy `playbook.example.yaml` to your project root as `playbook.yaml`. Set `preset` to match your project type (e.g. `web3-product`, `ai-agent-product`). Add overrides as needed.
+1. **New project**: Copy `playbook.example.yaml` to your project root as `playbook.yaml`. Set `playbook.preset` to match your project type (e.g. `web3-product`, `ai-agent-product`). Add include/exclude/overrides as needed.
    ```bash
    cp path/to/Team-Playbook/playbook.example.yaml ./playbook.yaml
-   # Edit: preset: web3-product (or ai-agent-product)
+   # Edit: playbook.preset: web3-product (or ai-agent-product)
+   pnpm playbook sync
    ```
-2. **AI / Cursor**: Point your agent at this repo. It can read modules, standards, and presets. Use `registry/index.json` for programmatic discovery.
+2. **AI / Cursor**: `pnpm playbook sync` generates `.playbook/modules` + `.cursor/rules` + `.cursor/skills` for direct consumption.
 3. **Manual**: Browse `modules/` and `presets/`. Copy or reference content as needed.
 
 ## How to Contribute

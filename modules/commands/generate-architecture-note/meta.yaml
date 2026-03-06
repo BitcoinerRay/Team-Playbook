@@ -3,7 +3,7 @@ name: Generate Architecture Note
 type: command
 version: "1.0"
 owner: team
-status: active
+status: stable
 summary: Scaffold architecture document from system name
 tags: [architecture, scaffold, design]
 applies_to: [engineering]

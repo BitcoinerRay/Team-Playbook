@@ -1,0 +1,19 @@
+id: preset-base
+name: Base
+version: "1.0"
+summary: Minimal base for product presets
+applies_to: [all]
+
+required:
+  rules:
+    - monorepo-base
+    - git-branching
+  skills: []
+  commands: []
+  templates: []
+
+optional:
+  rules: []
+  skills: []
+  commands: []
+  templates: []

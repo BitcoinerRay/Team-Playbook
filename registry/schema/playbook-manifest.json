@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Playbook Manifest",
+  "description": "Resolved playbook output for sync/consumption tools",
+  "type": "object",
+  "required": ["preset_id", "resolved_modules"],
+  "properties": {
+    "preset_id": { "type": "string", "description": "Preset ID used for resolution" },
+    "overrides": {
+      "type": "object",
+      "description": "Original overrides from playbook.yaml",
+      "properties": {
+        "rules": { "type": "object", "properties": { "add": { "type": "array", "items": { "type": "string" } }, "remove": { "type": "array", "items": { "type": "string" } } } },
+        "skills": { "type": "object", "properties": { "add": { "type": "array", "items": { "type": "string" } }, "remove": { "type": "array", "items": { "type": "string" } } } },
+        "commands": { "type": "object", "properties": { "add": { "type": "array", "items": { "type": "string" } }, "remove": { "type": "array", "items": { "type": "string" } } } },
+        "templates": { "type": "object", "properties": { "add": { "type": "array", "items": { "type": "string" } }, "remove": { "type": "array", "items": { "type": "string" } } } }
+      }
+    },
+    "resolved_modules": {
+      "type": "object",
+      "description": "Final module IDs by type after preset merge and overrides",
+      "properties": {
+        "rules": { "type": "array", "items": { "type": "string" } },
+        "skills": { "type": "array", "items": { "type": "string" } },
+        "commands": { "type": "array", "items": { "type": "string" } },
+        "templates": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "source": { "type": "string", "description": "Optional: playbook source URL or path for future sync" }
+  }
+}

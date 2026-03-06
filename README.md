@@ -1,24 +1,28 @@
 # Team Playbook
 
-A modular knowledge asset repository for team experience: skills, commands, rules, templates, and presets. Not a doc heap—an **engineering OS** that humans and AI agents can consume and extend.
+Modular knowledge assets for teams: rules, skills, commands, templates, and presets. An **engineering OS** that humans and AI agents can consume and extend.
 
-## Quick Start
+## 3-Step Setup
 
-```bash
-git clone <this-repo>
-cd Team-Playbook
-npm install
-npm run validate
-npm run build-registry
+1. **Clone** this repo (or add as submodule).
+2. **Choose a preset** and copy the config:
+   ```bash
+   cp playbook.example.yaml /path/to/your-project/playbook.yaml
+   ```
+3. **Edit** `playbook.yaml`: set `playbook.preset`, adjust `include/exclude/overrides`.
+4. **Sync into project**:
+   ```bash
+   pnpm playbook sync
+   ```
+
+Minimal `playbook.yaml`:
+
+```yaml
+playbook:
+  preset: web3-product
+  include:
+    rules: [backend-rest-style]
 ```
-
-Copy `playbook.example.yaml` to your project as `playbook.yaml`, set `preset: web3-product` or `preset: ai-agent-product`, add overrides as needed.
-
-## Why This Repo Exists
-
-- **Humans**: Read and contribute. Use principles, standards, and modules as reference.
-- **AI / Cursor**: Parse structured content. Use `registry/index.json` for discovery. Each module has `path` for file resolution.
-- **New projects**: Consume via `playbook.yaml` and presets. Sync only what you need.
 
 ## Structure
 
@@ -56,45 +60,21 @@ flowchart TB
 | Presets | `presets/` | Curated combinations for project types |
 | Registry | `registry/` | Machine-readable index (built from modules) |
 
-## Adding a Module
+## Contributing
 
-1. Pick type: rule, skill, command, or template.
-2. Read the spec in `standards/` (e.g. `rule-spec.md`).
-3. Create `modules/<type>/<id>/` with `meta.yaml` and `README.md`.
-4. Run `pnpm validate` (or `npm run validate`).
-5. Open a PR.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
-## Using a Preset
-
-1. Copy `playbook.example.yaml` to your project as `playbook.yaml`.
-2. Set `preset: web3-product` or `preset: ai-agent-product`.
-3. Add overrides (add/remove modules) as needed.
-
-```yaml
-preset: web3-product
-overrides:
-  rules:
-    add: [backend-rest-style]
-```
+Add modules, improve presets, or update principles. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Scripts
 
 | Command | Purpose |
 |---------|---------|
-| `pnpm run validate` or `npm run validate` | Check meta.yaml, id=dir, preset refs |
-| `pnpm run build-registry` or `npm run build-registry` | Rebuild `registry/index.json` and `search-index.json` |
-| `pnpm run sync-preset <name>` | Stub; future: copy/link modules into target project |
+| `npm run validate` | Check meta.yaml, preset refs |
+| `npm run build-registry` | Rebuild `registry/index.json` |
+| `pnpm playbook sync` | Resolve playbook.yaml and sync outputs into project |
+| `npm run sync-preset <name>` | Legacy入口，内部委托到新 `playbook sync` 逻辑 |
+
+Details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## AI / Agent Consumption
 
-- `registry/index.json`: Full module metadata including `path` (e.g. `modules/rules/git-branching`)
-- `registry/search-index.json`: Lightweight index for tag/summary search
-- Resolve preset: merge `required` + `overrides.add` - `overrides.remove` from preset.yaml
-
-## Roadmap
-
-- **sync-preset**: Implement copy/link of preset modules into target project.
-- **CI**: Run validate and build-registry on PR.
-- **Search**: Use search-index for tag/summary search (CLI or API).
+`registry/index.json` provides full module metadata and `path` for resolution. See [registry/README.md](registry/README.md) for the consumption contract.

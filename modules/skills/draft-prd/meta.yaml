@@ -3,7 +3,7 @@ name: Draft PRD
 type: skill
 version: "1.0"
 owner: team
-status: active
+status: stable
 summary: Transform problem statement into structured PRD
 tags: [prd, product, planning]
 applies_to: [product]

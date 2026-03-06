@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Module",
+  "description": "Module metadata as in registry index",
+  "type": "object",
+  "required": ["id", "name", "type", "version", "status", "summary", "path"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "type": { "type": "string", "enum": ["rule", "skill", "command", "template"] },
+    "version": { "type": "string" },
+    "owner": { "type": "string" },
+    "status": { "type": "string", "enum": ["stable", "experimental", "deprecated", "archived"] },
+    "summary": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "applies_to": { "type": "array", "items": { "type": "string" } },
+    "dependencies": { "type": "array", "items": { "type": "string" } },
+    "updated_at": { "type": "string" },
+    "path": { "type": "string" }
+  }
+}

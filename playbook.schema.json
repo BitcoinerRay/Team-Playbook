@@ -1,55 +1,67 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Playbook",
-  "description": "Declarative configuration for project playbook consumption",
-  "type": "object",
-  "properties": {
-    "version": { "type": "string", "default": "1" },
-    "preset": {
-      "type": "string",
-      "description": "Preset ID to inherit from (e.g. web3-product, ai-agent-product)"
-    },
-    "overrides": {
+  "description": "Declarative configuration for project playbook sync",
+  "oneOf": [
+    {
       "type": "object",
+      "required": ["playbook"],
       "properties": {
-        "rules": {
+        "playbook": {
           "type": "object",
           "properties": {
-            "add": { "type": "array", "items": { "type": "string" } },
-            "remove": { "type": "array", "items": { "type": "string" } }
-          }
-        },
-        "skills": {
-          "type": "object",
-          "properties": {
-            "add": { "type": "array", "items": { "type": "string" } },
-            "remove": { "type": "array", "items": { "type": "string" } }
-          }
-        },
-        "commands": {
-          "type": "object",
-          "properties": {
-            "add": { "type": "array", "items": { "type": "string" } },
-            "remove": { "type": "array", "items": { "type": "string" } }
-          }
-        },
-        "templates": {
-          "type": "object",
-          "properties": {
-            "add": { "type": "array", "items": { "type": "string" } },
-            "remove": { "type": "array", "items": { "type": "string" } }
+            "source": {
+              "type": "object",
+              "properties": {
+                "repo": { "type": "string" },
+                "ref": { "type": "string" }
+              }
+            },
+            "preset": { "type": "string" },
+            "include": { "$ref": "#/definitions/moduleRefs" },
+            "exclude": { "$ref": "#/definitions/moduleRefs" },
+            "overrides": {
+              "type": "object",
+              "description": "Project-level parameters passed to modules/agents"
+            }
           }
         }
       }
     },
-    "modules": {
+    {
       "type": "object",
-      "description": "Direct module references when not using preset",
+      "description": "Legacy format (kept for compatibility)",
+      "properties": {
+        "version": { "type": "string", "default": "1" },
+        "preset": { "type": "string" },
+        "modules": { "$ref": "#/definitions/moduleRefs" },
+        "overrides": {
+          "type": "object",
+          "properties": {
+            "rules": { "$ref": "#/definitions/legacyOverride" },
+            "skills": { "$ref": "#/definitions/legacyOverride" },
+            "commands": { "$ref": "#/definitions/legacyOverride" },
+            "templates": { "$ref": "#/definitions/legacyOverride" }
+          }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "moduleRefs": {
+      "type": "object",
       "properties": {
         "rules": { "type": "array", "items": { "type": "string" } },
         "skills": { "type": "array", "items": { "type": "string" } },
         "commands": { "type": "array", "items": { "type": "string" } },
         "templates": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "legacyOverride": {
+      "type": "object",
+      "properties": {
+        "add": { "type": "array", "items": { "type": "string" } },
+        "remove": { "type": "array", "items": { "type": "string" } }
       }
     }
   }

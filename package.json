@@ -6,7 +6,8 @@
   "scripts": {
     "validate": "tsx scripts/validate.ts",
     "build-registry": "tsx scripts/build-registry.ts",
-    "sync-preset": "tsx scripts/sync-preset.ts"
+    "sync-preset": "tsx scripts/sync-preset.ts",
+    "playbook": "tsx scripts/playbook.ts"
   },
   "devDependencies": {
     "typescript": "^5.3.0",

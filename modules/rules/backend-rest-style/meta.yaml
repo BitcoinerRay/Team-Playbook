@@ -3,7 +3,7 @@ name: Backend REST Style
 type: rule
 version: "1.0"
 owner: team
-status: active
+status: stable
 summary: Resource naming, HTTP verbs, and status code conventions for REST APIs
 tags: [api, rest, backend]
 applies_to: [backend]

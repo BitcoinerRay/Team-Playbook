@@ -3,7 +3,7 @@ name: Review Feature Scope
 type: command
 version: "1.0"
 owner: team
-status: active
+status: stable
 summary: Validate scope document against checklist
 tags: [scope, review, feature]
 applies_to: [product, engineering]

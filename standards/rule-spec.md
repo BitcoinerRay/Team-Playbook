@@ -18,7 +18,7 @@ name: Git Branching
 type: rule
 version: "1.0"
 owner: team
-status: active
+status: stable
 summary: Branch naming and PR flow conventions
 tags: [git, workflow]
 applies_to: [all]
