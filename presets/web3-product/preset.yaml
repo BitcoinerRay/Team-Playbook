@@ -1,0 +1,32 @@
+id: web3-product
+name: Web3 Product
+version: "1.0"
+summary: Preset for Web3/crypto product projects
+applies_to: [web3, crypto, product]
+
+required:
+  rules:
+    - monorepo-base
+    - git-branching
+    - env-management
+  skills:
+    - draft-prd
+  commands:
+    []
+  templates:
+    - prd-template
+
+optional:
+  rules:
+    - backend-rest-style
+    - frontend-structure
+  skills:
+    - architecture-review
+    - launch-copywriting
+  commands:
+    - create-prd
+    - generate-architecture-note
+    - review-feature-scope
+  templates:
+    - architecture-template
+    - launch-plan-template

@@ -1,0 +1,11 @@
+id: architecture-review
+name: Architecture Review
+type: skill
+version: "1.0"
+owner: team
+status: active
+summary: Review design docs for tradeoffs, risks, and alternatives
+tags: [architecture, review, design]
+applies_to: [engineering]
+dependencies: [architecture-template]
+updated_at: "2025-03-06"

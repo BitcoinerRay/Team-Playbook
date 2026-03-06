@@ -1,0 +1,11 @@
+id: backend-rest-style
+name: Backend REST Style
+type: rule
+version: "1.0"
+owner: team
+status: active
+summary: Resource naming, HTTP verbs, and status code conventions for REST APIs
+tags: [api, rest, backend]
+applies_to: [backend]
+dependencies: []
+updated_at: "2025-03-06"

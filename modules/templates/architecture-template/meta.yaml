@@ -1,0 +1,11 @@
+id: architecture-template
+name: Architecture Template
+type: template
+version: "1.0"
+owner: team
+status: active
+summary: Architecture decision and design document structure
+tags: [architecture, design, adr]
+applies_to: [engineering]
+dependencies: []
+updated_at: "2025-03-06"

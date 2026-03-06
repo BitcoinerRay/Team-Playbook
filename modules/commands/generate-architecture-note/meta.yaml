@@ -1,0 +1,11 @@
+id: generate-architecture-note
+name: Generate Architecture Note
+type: command
+version: "1.0"
+owner: team
+status: active
+summary: Scaffold architecture document from system name
+tags: [architecture, scaffold, design]
+applies_to: [engineering]
+dependencies: [architecture-template]
+updated_at: "2025-03-06"

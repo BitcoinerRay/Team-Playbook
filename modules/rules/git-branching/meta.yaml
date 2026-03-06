@@ -1,0 +1,11 @@
+id: git-branching
+name: Git Branching
+type: rule
+version: "1.0"
+owner: team
+status: active
+summary: Branch naming and PR flow conventions
+tags: [git, workflow, branching]
+applies_to: [all]
+dependencies: []
+updated_at: "2025-03-06"

@@ -1,0 +1,17 @@
+{
+  "name": "team-playbook",
+  "version": "0.1.0",
+  "description": "Team knowledge asset repository: skills, commands, rules, templates, presets",
+  "type": "module",
+  "scripts": {
+    "validate": "tsx scripts/validate.ts",
+    "build-registry": "tsx scripts/build-registry.ts",
+    "sync-preset": "tsx scripts/sync-preset.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "tsx": "^4.7.0",
+    "zod": "^3.22.0",
+    "yaml": "^2.3.0"
+  }
+}

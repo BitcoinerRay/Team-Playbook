@@ -1,0 +1,11 @@
+id: frontend-structure
+name: Frontend Structure
+type: rule
+version: "1.0"
+owner: team
+status: active
+summary: Feature folders, component hierarchy, and state placement
+tags: [frontend, structure, react]
+applies_to: [frontend]
+dependencies: []
+updated_at: "2025-03-06"

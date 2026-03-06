@@ -1,0 +1,17 @@
+version: "1"
+
+preset: web3-product
+
+overrides:
+  rules:
+    add: [backend-rest-style]
+    remove: []
+  skills:
+    add: [launch-copywriting]
+    remove: []
+  commands:
+    add: [create-prd]
+    remove: []
+  templates:
+    add: [launch-plan-template]
+    remove: []

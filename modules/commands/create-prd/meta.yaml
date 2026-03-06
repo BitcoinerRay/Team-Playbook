@@ -1,0 +1,11 @@
+id: create-prd
+name: Create PRD
+type: command
+version: "1.0"
+owner: team
+status: active
+summary: Scaffold a new PRD from problem statement
+tags: [prd, scaffold, product]
+applies_to: [product]
+dependencies: [prd-template]
+updated_at: "2025-03-06"

@@ -1,0 +1,17 @@
+version: "1"
+
+preset: ai-agent-product
+
+overrides:
+  rules:
+    add: [env-management]
+    remove: []
+  skills:
+    add: [launch-copywriting]
+    remove: []
+  commands:
+    add: [create-prd, review-feature-scope]
+    remove: []
+  templates:
+    add: [launch-plan-template]
+    remove: []

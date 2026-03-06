@@ -1,0 +1,30 @@
+id: ai-agent-product
+name: AI Agent Product
+version: "1.0"
+summary: Preset for AI/Agent product projects
+applies_to: [ai, agent, product]
+
+required:
+  rules:
+    - monorepo-base
+    - git-branching
+  skills:
+    - draft-prd
+    - feature-scoping
+  commands:
+    []
+  templates:
+    - prd-template
+
+optional:
+  rules:
+    - env-management
+    - frontend-structure
+  skills:
+    - architecture-review
+  commands:
+    - create-prd
+    - review-feature-scope
+    - generate-architecture-note
+  templates:
+    - architecture-template

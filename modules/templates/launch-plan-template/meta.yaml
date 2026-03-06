@@ -1,0 +1,11 @@
+id: launch-plan-template
+name: Launch Plan Template
+type: template
+version: "1.0"
+owner: team
+status: active
+summary: Launch plan structure with channels, copy, and rollback
+tags: [launch, product, marketing]
+applies_to: [product]
+dependencies: []
+updated_at: "2025-03-06"

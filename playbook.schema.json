@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Playbook",
+  "description": "Declarative configuration for project playbook consumption",
+  "type": "object",
+  "properties": {
+    "version": { "type": "string", "default": "1" },
+    "preset": {
+      "type": "string",
+      "description": "Preset ID to inherit from (e.g. web3-product, ai-agent-product)"
+    },
+    "overrides": {
+      "type": "object",
+      "properties": {
+        "rules": {
+          "type": "object",
+          "properties": {
+            "add": { "type": "array", "items": { "type": "string" } },
+            "remove": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "skills": {
+          "type": "object",
+          "properties": {
+            "add": { "type": "array", "items": { "type": "string" } },
+            "remove": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "commands": {
+          "type": "object",
+          "properties": {
+            "add": { "type": "array", "items": { "type": "string" } },
+            "remove": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "templates": {
+          "type": "object",
+          "properties": {
+            "add": { "type": "array", "items": { "type": "string" } },
+            "remove": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "modules": {
+      "type": "object",
+      "description": "Direct module references when not using preset",
+      "properties": {
+        "rules": { "type": "array", "items": { "type": "string" } },
+        "skills": { "type": "array", "items": { "type": "string" } },
+        "commands": { "type": "array", "items": { "type": "string" } },
+        "templates": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

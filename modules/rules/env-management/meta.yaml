@@ -1,0 +1,11 @@
+id: env-management
+name: Environment Management
+type: rule
+version: "1.0"
+owner: team
+status: active
+summary: .env.example, secrets handling, and environment per stage
+tags: [env, secrets, config]
+applies_to: [all]
+dependencies: []
+updated_at: "2025-03-06"

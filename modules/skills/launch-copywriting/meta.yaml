@@ -1,0 +1,11 @@
+id: launch-copywriting
+name: Launch Copywriting
+type: skill
+version: "1.0"
+owner: team
+status: active
+summary: Transform feature list into value-first launch copy
+tags: [launch, copy, product]
+applies_to: [product]
+dependencies: [launch-plan-template]
+updated_at: "2025-03-06"

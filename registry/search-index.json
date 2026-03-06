@@ -1,0 +1,208 @@
+{
+  "modules": [
+    {
+      "id": "backend-rest-style",
+      "name": "Backend REST Style",
+      "type": "rule",
+      "summary": "Resource naming, HTTP verbs, and status code conventions for REST APIs",
+      "tags": [
+        "api",
+        "rest",
+        "backend"
+      ],
+      "path": "modules/rules/backend-rest-style"
+    },
+    {
+      "id": "env-management",
+      "name": "Environment Management",
+      "type": "rule",
+      "summary": ".env.example, secrets handling, and environment per stage",
+      "tags": [
+        "env",
+        "secrets",
+        "config"
+      ],
+      "path": "modules/rules/env-management"
+    },
+    {
+      "id": "frontend-structure",
+      "name": "Frontend Structure",
+      "type": "rule",
+      "summary": "Feature folders, component hierarchy, and state placement",
+      "tags": [
+        "frontend",
+        "structure",
+        "react"
+      ],
+      "path": "modules/rules/frontend-structure"
+    },
+    {
+      "id": "git-branching",
+      "name": "Git Branching",
+      "type": "rule",
+      "summary": "Branch naming and PR flow conventions",
+      "tags": [
+        "git",
+        "workflow",
+        "branching"
+      ],
+      "path": "modules/rules/git-branching"
+    },
+    {
+      "id": "monorepo-base",
+      "name": "Monorepo Base",
+      "type": "rule",
+      "summary": "Workspace layout, package boundaries, and shared dependencies for monorepos",
+      "tags": [
+        "monorepo",
+        "structure",
+        "workspace"
+      ],
+      "path": "modules/rules/monorepo-base"
+    },
+    {
+      "id": "architecture-review",
+      "name": "Architecture Review",
+      "type": "skill",
+      "summary": "Review design docs for tradeoffs, risks, and alternatives",
+      "tags": [
+        "architecture",
+        "review",
+        "design"
+      ],
+      "path": "modules/skills/architecture-review"
+    },
+    {
+      "id": "draft-prd",
+      "name": "Draft PRD",
+      "type": "skill",
+      "summary": "Transform problem statement into structured PRD",
+      "tags": [
+        "prd",
+        "product",
+        "planning"
+      ],
+      "path": "modules/skills/draft-prd"
+    },
+    {
+      "id": "feature-scoping",
+      "name": "Feature Scoping",
+      "type": "skill",
+      "summary": "Define acceptance criteria and edge cases for a feature",
+      "tags": [
+        "scope",
+        "feature",
+        "planning"
+      ],
+      "path": "modules/skills/feature-scoping"
+    },
+    {
+      "id": "launch-copywriting",
+      "name": "Launch Copywriting",
+      "type": "skill",
+      "summary": "Transform feature list into value-first launch copy",
+      "tags": [
+        "launch",
+        "copy",
+        "product"
+      ],
+      "path": "modules/skills/launch-copywriting"
+    },
+    {
+      "id": "create-prd",
+      "name": "Create PRD",
+      "type": "command",
+      "summary": "Scaffold a new PRD from problem statement",
+      "tags": [
+        "prd",
+        "scaffold",
+        "product"
+      ],
+      "path": "modules/commands/create-prd"
+    },
+    {
+      "id": "generate-architecture-note",
+      "name": "Generate Architecture Note",
+      "type": "command",
+      "summary": "Scaffold architecture document from system name",
+      "tags": [
+        "architecture",
+        "scaffold",
+        "design"
+      ],
+      "path": "modules/commands/generate-architecture-note"
+    },
+    {
+      "id": "review-feature-scope",
+      "name": "Review Feature Scope",
+      "type": "command",
+      "summary": "Validate scope document against checklist",
+      "tags": [
+        "scope",
+        "review",
+        "feature"
+      ],
+      "path": "modules/commands/review-feature-scope"
+    },
+    {
+      "id": "architecture-template",
+      "name": "Architecture Template",
+      "type": "template",
+      "summary": "Architecture decision and design document structure",
+      "tags": [
+        "architecture",
+        "design",
+        "adr"
+      ],
+      "path": "modules/templates/architecture-template"
+    },
+    {
+      "id": "launch-plan-template",
+      "name": "Launch Plan Template",
+      "type": "template",
+      "summary": "Launch plan structure with channels, copy, and rollback",
+      "tags": [
+        "launch",
+        "product",
+        "marketing"
+      ],
+      "path": "modules/templates/launch-plan-template"
+    },
+    {
+      "id": "prd-template",
+      "name": "PRD Template",
+      "type": "template",
+      "summary": "Product Requirements Document structure",
+      "tags": [
+        "prd",
+        "product",
+        "planning"
+      ],
+      "path": "modules/templates/prd-template"
+    }
+  ],
+  "presets": [
+    {
+      "id": "ai-agent-product",
+      "name": "AI Agent Product",
+      "summary": "Preset for AI/Agent product projects",
+      "tags": [
+        "ai",
+        "agent",
+        "product"
+      ],
+      "path": "presets/ai-agent-product"
+    },
+    {
+      "id": "web3-product",
+      "name": "Web3 Product",
+      "summary": "Preset for Web3/crypto product projects",
+      "tags": [
+        "web3",
+        "crypto",
+        "product"
+      ],
+      "path": "presets/web3-product"
+    }
+  ]
+}

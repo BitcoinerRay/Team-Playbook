@@ -1,0 +1,11 @@
+id: feature-scoping
+name: Feature Scoping
+type: skill
+version: "1.0"
+owner: team
+status: active
+summary: Define acceptance criteria and edge cases for a feature
+tags: [scope, feature, planning]
+applies_to: [product, engineering]
+dependencies: []
+updated_at: "2025-03-06"

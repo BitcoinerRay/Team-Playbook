@@ -1,0 +1,11 @@
+id: monorepo-base
+name: Monorepo Base
+type: rule
+version: "1.0"
+owner: team
+status: active
+summary: Workspace layout, package boundaries, and shared dependencies for monorepos
+tags: [monorepo, structure, workspace]
+applies_to: [monorepo]
+dependencies: []
+updated_at: "2025-03-06"

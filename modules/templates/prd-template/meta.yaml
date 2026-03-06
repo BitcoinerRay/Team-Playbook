@@ -1,0 +1,11 @@
+id: prd-template
+name: PRD Template
+type: template
+version: "1.0"
+owner: team
+status: active
+summary: Product Requirements Document structure
+tags: [prd, product, planning]
+applies_to: [product]
+dependencies: []
+updated_at: "2025-03-06"
